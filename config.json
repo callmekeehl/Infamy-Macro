@@ -1,0 +1,55 @@
+{
+  "keybinds": {
+    "interact": "e",
+    "geppo": "space",
+    "forward": "w",
+    "server_hop_key": "f5",
+    "emergency_stop": "f6"
+  },
+  "timings": {
+    "server_join_wait_sec": 18,
+    "claim_hold_sec": 1.5,
+    "geppo_jump_count": 3,
+    "geppo_interval_sec": 0.2,
+    "geppo_fall_delay_sec": 2.5,
+    "infamy_tick_cooldown_sec": 60,
+    "loop_poll_sec": 0.5
+  },
+  "regions": {
+    "flag_status": {
+      "x": 800,
+      "y": 100,
+      "width": 300,
+      "height": 100,
+      "description": "Region where Sett's flag status text/icon appears"
+    },
+    "infamy_ready": {
+      "x": 850,
+      "y": 200,
+      "width": 200,
+      "height": 80,
+      "description": "Region showing infamy ready to claim indicator"
+    },
+    "health_bar": {
+      "x": 100,
+      "y": 900,
+      "width": 250,
+      "height": 40,
+      "description": "Health bar region to detect death"
+    }
+  },
+  "color_targets": {
+    "flag_free_hsv_low": [40, 50, 50],
+    "flag_free_hsv_high": [80, 255, 255],
+    "flag_taken_hsv_low": [0, 100, 100],
+    "flag_taken_hsv_high": [10, 255, 255],
+    "infamy_ready_hsv_low": [20, 100, 100],
+    "infamy_ready_hsv_high": [35, 255, 255],
+    "death_black_threshold": 20
+  },
+  "server_hop": {
+    "method": "deep_link",
+    "place_id": "1730877806",
+    "rejoin_url": "roblox://placeId=1730877806"
+  }
+}
