@@ -3,7 +3,9 @@
     "interact": "e",
     "geppo": "space",
     "forward": "w",
-    "server_hop_key": "f5",
+    "backward": "s",
+    "left": "a",
+    "right": "d",
     "emergency_stop": "f6"
   },
   "timings": {
@@ -13,28 +15,49 @@
     "geppo_interval_sec": 0.2,
     "geppo_fall_delay_sec": 2.5,
     "infamy_tick_cooldown_sec": 60,
-    "loop_poll_sec": 0.5
+    "loop_poll_sec": 0.2,
+    "ui_click_delay_sec": 0.8,
+    "death_monitor_fps": 60
+  },
+  "ui_click_targets": {
+    "top_right_settings_btn": {
+      "x_ratio": 0.177,
+      "y_ratio": 0.038,
+      "description": "Click gear/settings icon on top left menu bar"
+    },
+    "sub_menu_server_icon": {
+      "x_ratio": 0.115,
+      "y_ratio": 0.038,
+      "description": "Click server menu icon (rectangle with play button)"
+    }
   },
   "regions": {
-    "flag_status": {
-      "x": 800,
-      "y": 100,
-      "width": 300,
-      "height": 100,
-      "description": "Region where Sett's flag status text/icon appears"
+    "server_list_window": {
+      "x_ratio": 0.20,
+      "y_ratio": 0.25,
+      "w_ratio": 0.60,
+      "h_ratio": 0.55,
+      "description": "Bounding box of the server list scroll region"
     },
-    "infamy_ready": {
+    "flag_status_hud": {
+      "x": 800,
+      "y": 80,
+      "width": 320,
+      "height": 100,
+      "description": "HUD area for Sett's flag status text/icon"
+    },
+    "infamy_ready_hud": {
       "x": 850,
-      "y": 200,
-      "width": 200,
+      "y": 180,
+      "width": 220,
       "height": 80,
-      "description": "Region showing infamy ready to claim indicator"
+      "description": "HUD area showing infamy claim timer pulse"
     },
     "health_bar": {
       "x": 100,
-      "y": 900,
-      "width": 250,
-      "height": 40,
+      "y": 890,
+      "width": 260,
+      "height": 45,
       "description": "Health bar region to detect death"
     }
   },
@@ -45,11 +68,13 @@
     "flag_taken_hsv_high": [10, 255, 255],
     "infamy_ready_hsv_low": [20, 100, 100],
     "infamy_ready_hsv_high": [35, 255, 255],
+    "flag_icon_hsv_low": [30, 80, 80],
+    "flag_icon_hsv_high": [90, 255, 255],
     "death_black_threshold": 20
   },
   "server_hop": {
-    "method": "deep_link",
-    "place_id": "1730877806",
-    "rejoin_url": "roblox://placeId=1730877806"
+    "method": "in_game_ui",
+    "require_crew_flag_icon": true,
+    "max_server_scan_rows": 6
   }
 }

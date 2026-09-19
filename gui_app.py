@@ -1,7 +1,7 @@
 import json
 import tkinter as tk
 from tkinter import ttk, messagebox, scrolledtext
-from macro_core import MacroCore
+from macro_core import MacroStateMachine
 
 class MacroGUI:
     """
@@ -18,10 +18,11 @@ class MacroGUI:
         self.config = self._load_config()
 
         # Macro engine instance
-        self.macro = MacroCore(self.config, log_callback=self.log_message)
+        self.macro = MacroStateMachine(self.config, log_callback=self.log_message)
 
         # Build UI layout
         self._build_ui()
+
 
     def _load_config(self) -> dict:
         try:
@@ -124,8 +125,19 @@ class MacroGUI:
             ent.grid(row=row, column=col+1, sticky=tk.W, padx=5, pady=3)
             self.time_entries[k] = ent
 
+        # Hop method frame
+        hop_frame = ttk.LabelFrame(tab_settings, text="Server Hop Method", padding=10)
+        hop_frame.pack(fill=tk.X, pady=5)
+
+        self.hop_method_var = tk.StringVar(value=self.config.get("server_hop", {}).get("method", "in_game_ui"))
+        r1 = ttk.Radiobutton(hop_frame, text="In-Game UI Menu Clicks (Recommended)", variable=self.hop_method_var, value="in_game_ui")
+        r1.pack(anchor=tk.W)
+        r2 = ttk.Radiobutton(hop_frame, text="Deep Link / Roblox Protocol Rejoin", variable=self.hop_method_var, value="deep_link")
+        r2.pack(anchor=tk.W)
+
         save_btn = ttk.Button(tab_settings, text="💾 Save Settings", command=self._apply_settings)
         save_btn.pack(anchor=tk.E, pady=10)
+
 
     def _start_macro(self):
         self.macro.start()
@@ -148,8 +160,13 @@ class MacroGUI:
             except ValueError:
                 pass
 
+        if "server_hop" not in self.config:
+            self.config["server_hop"] = {}
+        self.config["server_hop"]["method"] = self.hop_method_var.get()
+
         self._save_config()
         self.macro.config = self.config
+
 
 if __name__ == "__main__":
     root = tk.Tk()
