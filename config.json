@@ -1,80 +1,67 @@
 {
+  "theme": "dark",
   "keybinds": {
-    "interact": "e",
-    "geppo": "space",
+    "toggle_macro": "f1",
     "forward": "w",
     "backward": "s",
     "left": "a",
     "right": "d",
-    "emergency_stop": "f6"
+    "geppo": "space"
   },
   "timings": {
-    "server_join_wait_sec": 18,
-    "claim_hold_sec": 1.5,
-    "geppo_jump_count": 3,
+    "startup_delay_sec": 3.0,
+    "walk_to_flag_sec": 1.2,
+    "retreat_to_safe_sec": 1.2,
+    "infamy_cycle_min": 11.0,
+    "geppo_jump_count": 4,
     "geppo_interval_sec": 0.2,
     "geppo_fall_delay_sec": 2.5,
-    "infamy_tick_cooldown_sec": 60,
-    "loop_poll_sec": 0.2,
+    "server_join_wait_sec": 18.0,
     "ui_click_delay_sec": 0.8,
-    "death_monitor_fps": 60
+    "zoom_scroll_ticks": 6
   },
-  "ui_click_targets": {
-    "top_right_settings_btn": {
-      "x_ratio": 0.177,
-      "y_ratio": 0.038,
-      "description": "Click gear/settings icon on top left menu bar"
+  "zones": {
+    "top_left_menu_icon": {
+      "name": "Top-Left Menu Icon (Blue)",
+      "color": "#00A8FF",
+      "x": 220, "y": 25, "w": 40, "h": 40,
+      "description": "Gear/Settings icon click zone"
     },
     "sub_menu_server_icon": {
-      "x_ratio": 0.115,
-      "y_ratio": 0.038,
-      "description": "Click server menu icon (rectangle with play button)"
+      "name": "Sub-Menu Server Icon (Yellow)",
+      "color": "#FFD100",
+      "x": 140, "y": 25, "w": 40, "h": 40,
+      "description": "Server browser icon click zone"
+    },
+    "whole_flag_area": {
+      "name": "Whole Flag Area (Green)",
+      "color": "#00E676",
+      "x": 750, "y": 150, "w": 420, "h": 250,
+      "description": "Flag area color & enemy presence monitor"
+    },
+    "flag_capture_pct_text": {
+      "name": "Flag Capture % Text (Cyan)",
+      "color": "#00E5FF",
+      "x": 900, "y": 100, "w": 140, "h": 50,
+      "description": "Percentage text monitor (100% completion)"
+    },
+    "hp_bar_zone": {
+      "name": "HP Bar Zone (Red)",
+      "color": "#FF1744",
+      "x": 100, "y": 890, "w": 260, "h": 45,
+      "description": "Health bar monitor (Server hop if HP hits 0)"
+    },
+    "player_character_zone": {
+      "name": "Player Character Zone (Orange)",
+      "color": "#FF9100",
+      "x": 920, "y": 500, "w": 80, "h": 120,
+      "description": "Player character position monitor"
+    },
+    "server_join_button": {
+      "name": "Server Join Button (Purple)",
+      "color": "#D500F9",
+      "x": 930, "y": 380, "w": 120, "h": 45,
+      "description": "Green JOIN button click zone in server browser"
     }
-  },
-  "regions": {
-    "server_list_window": {
-      "x_ratio": 0.20,
-      "y_ratio": 0.25,
-      "w_ratio": 0.60,
-      "h_ratio": 0.55,
-      "description": "Bounding box of the server list scroll region"
-    },
-    "flag_status_hud": {
-      "x": 800,
-      "y": 80,
-      "width": 320,
-      "height": 100,
-      "description": "HUD area for Sett's flag status text/icon"
-    },
-    "infamy_ready_hud": {
-      "x": 850,
-      "y": 180,
-      "width": 220,
-      "height": 80,
-      "description": "HUD area showing infamy claim timer pulse"
-    },
-    "health_bar": {
-      "x": 100,
-      "y": 890,
-      "width": 260,
-      "height": 45,
-      "description": "Health bar region to detect death"
-    }
-  },
-  "color_targets": {
-    "flag_free_hsv_low": [40, 50, 50],
-    "flag_free_hsv_high": [80, 255, 255],
-    "flag_taken_hsv_low": [0, 100, 100],
-    "flag_taken_hsv_high": [10, 255, 255],
-    "infamy_ready_hsv_low": [20, 100, 100],
-    "infamy_ready_hsv_high": [35, 255, 255],
-    "flag_icon_hsv_low": [30, 80, 80],
-    "flag_icon_hsv_high": [90, 255, 255],
-    "death_black_threshold": 20
-  },
-  "server_hop": {
-    "method": "in_game_ui",
-    "require_crew_flag_icon": true,
-    "max_server_scan_rows": 6
   }
 }

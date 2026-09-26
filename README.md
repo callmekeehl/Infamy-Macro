@@ -1,38 +1,28 @@
-# GPO Sett's Arena Infamy Macro (No Injection)
+# GPO Sett's Arena Infamy Macro (v2.0)
 
-An external, pixel/vision-based macro for Grand Piece Online (GPO) on Roblox designed specifically for automating infamy farming at **Sett's Arena**.
-
-## 🛡️ Safety & Architecture
-- **No Memory Injection**: Operates 100% externally via screen capture (`mss`/`OpenCV`) and synthetic input simulation (`pyautogui`/`pynput`).
-- **Does not edit or read Roblox game memory or process handles.**
-- Includes **Emergency Stop (Hotkey: F6)** and PyAutoGUI failsafe (moving cursor to screen corner instantly halts execution).
+A ground-up rebuild of the non-injectable GPO Sett's Arena Infamy Macro built with Python, OpenCV, sub-10ms `mss` screen capture, `pynput` direct OS inputs, and CustomTkinter.
 
 ---
 
-## 🚀 Features & Automation Flow
-1. **Flag Availability Scan**: Inspects Sett's Arena flag region. If free, proceeds to claim. If taken or contested, automatically hops servers.
-2. **Flag Claiming**: Walks into the flag circle and holds interact key (`E`).
-3. **Safe Zone Idling**: Returns to safety zone and monitors for claim readiness.
-4. **Geppo Claim Tick**: When infamy is ready to claim, performs Geppo jumps (`Space`) straight up out of the safety zone to collect the infamy tick, then falls back down safely.
-5. **Multi-Claim & Rejoin Loop**: Repeats claim up to **2 times** per server, or immediately server hops if the flag is lost/taken.
-6. **Death Detection**: Monitors health status and stops immediately if player death occurs.
+## ✨ Features (v2.0 Rebuild)
+
+1. **Light / Dark Mode UI**: Modern desktop GUI powered by `CustomTkinter` with instant theme toggling.
+2. **`F1` Global Hotkey**: Press `F1` anywhere to start or stop the macro instantly with a configurable startup delay.
+3. **Interactive Multi-Color Zone Setter**: Full-screen canvas overlay tool allowing users to drag, draw, select, move, and resize colored bounding boxes:
+   - 🔵 **Top-Left Menu Icon Zone** (Blue)
+   - 🟡 **Sub-Menu Server List Icon Zone** (Yellow)
+   - 🟢 **Whole Flag Area Zone** (Green)
+   - 🩵 **Flag Capture % Text Zone** (Cyan - monitors 100% completion)
+   - 🔴 **HP Bar Zone** (Red - triggers Server Hop when HP = 0)
+   - 🟠 **Player Character Zone** (Orange)
+   - 🟣 **Server Join Button Zone** (Purple)
+4. **Fresh Sett's Spawn Handling**: Walks straight forward into the flag capture circle from spawn.
+5. **Flag Capture % Monitoring**: Automatically zooms camera out and checks percentage completion without needing to hold `E`.
+6. **11-Minute Infamy Geppo Harvest**: Waits 11 minutes in the safe zone, then executes Geppo sky-walk jumps straight up to harvest the infamy drop tick.
 
 ---
 
-## 📦 How to Run (No Coding Required!)
+## 📦 Double-Click Launchers
 
-### macOS:
-Double-click [`run_macro.command`](file:///Users/justkeehl/IdeaProjects/GPO%20Infamy%20MACRO/run_macro.command) in Finder.
-
-### Windows:
-Double-click [`run_macro.bat`](file:///Users/justkeehl/IdeaProjects/GPO%20Infamy%20MACRO/run_macro.bat) in File Explorer.
-
-*The script will automatically check/install requirements and launch the GUI launcher!*
-
----
-
-## ⚙️ Configuration (`config.json`)
-You can tweak settings directly inside the **GUI Settings tab** or edit `config.json`:
-- `keybinds`: Custom key mapping for interact, geppo, movement, and hotkeys.
-- `timings`: Delays for server loading, flag hold time, Geppo jump counts, and infamy tick intervals.
-- `regions`: Screen bounding boxes for flag status, infamy indicators, and health bar.
+- **macOS**: Double-click [`run_macro.command`](file:///Users/justkeehl/IdeaProjects/GPO%20Infamy%20MACRO/run_macro.command)
+- **Windows**: Double-click [`run_macro.bat`](file:///Users/justkeehl/IdeaProjects/GPO%20Infamy%20MACRO/run_macro.bat)
