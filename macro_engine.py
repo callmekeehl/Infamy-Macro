@@ -176,9 +176,18 @@ class MacroEngine:
         self.log("Clicking Sub-Menu Server Icon (Yellow Zone)...")
         self.inputs.click_zone_center("sub_menu_server_icon", delay * 1.5)
 
-        self.log("Clicking Server Join Button (Purple Zone)...")
-        self.inputs.click_zone_center("server_join_button", delay)
+        self.log("Scanning Whole Server List Panel (Purple Zone) for green JOIN button...")
+        coords = self.vision.find_green_join_button_in_panel()
+        if coords:
+            x, y = coords
+            self.log(f"Green JOIN button found at ({x}, {y})! Clicking JOIN...")
+            import pyautogui
+            pyautogui.click(x, y)
+        else:
+            self.log("Fallback: Clicking center of Purple Zone...")
+            self.inputs.click_zone_center("server_join_button", delay)
 
         self.log(f"Waiting {wait_sec} seconds for server loading screen...")
         time.sleep(wait_sec)
         self.log("Server hop complete.")
+

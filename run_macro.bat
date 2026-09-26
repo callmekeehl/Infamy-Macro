@@ -11,5 +11,5 @@ python -m pip install -r requirements.txt
 
 echo.
 echo Launching Macro GUI...
-python gui_app.py
+python ui_app.py
 pause

@@ -49,7 +49,7 @@
       "name": "HP Bar Zone (Red)",
       "color": "#FF1744",
       "x": 100, "y": 890, "w": 260, "h": 45,
-      "description": "Health bar monitor (Server hop if HP hits 0)"
+      "description": "Health bar monitor (Server hop when HP hits 0)"
     },
     "player_character_zone": {
       "name": "Player Character Zone (Orange)",
@@ -58,10 +58,10 @@
       "description": "Player character position monitor"
     },
     "server_join_button": {
-      "name": "Server Join Button (Purple)",
+      "name": "Whole Server List Window (Purple)",
       "color": "#D500F9",
-      "x": 930, "y": 380, "w": 120, "h": 45,
-      "description": "Green JOIN button click zone in server browser"
+      "x": 380, "y": 250, "w": 1150, "h": 630,
+      "description": "Whole server list window zone (scans for green JOIN buttons)"
     }
   }
 }

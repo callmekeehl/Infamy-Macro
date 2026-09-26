@@ -1,7 +1,7 @@
 import mss
 import numpy as np
 import cv2
-from typing import Dict, Tuple
+from typing import Dict, Tuple, Optional
 
 class VisionEngine:
     """
@@ -39,6 +39,37 @@ class VisionEngine:
             return avg_brightness < 25.0
         except Exception:
             return False
+
+    def find_green_join_button_in_panel(self) -> Optional[Tuple[int, int]]:
+        """
+        Scans the Whole Server List Window (Purple Zone) to locate the green JOIN button.
+        Returns (x, y) absolute screen pixel coordinates of the JOIN button center, or None.
+        """
+        try:
+            z = self.config["zones"]["server_join_button"]
+            img = self.capture_zone("server_join_button")
+            hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+            # Green JOIN button HSV color range
+            low_green = np.array([35, 120, 120], dtype=np.uint8)
+            high_green = np.array([85, 255, 255], dtype=np.uint8)
+            mask = cv2.inRange(hsv, low_green, high_green)
+
+            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            for cnt in contours:
+                area = cv2.contourArea(cnt)
+                if area > 100:  # Minimum green button area
+                    M = cv2.moments(cnt)
+                    if M["m00"] != 0:
+                        cx = int(M["m10"] / M["m00"])
+                        cy = int(M["m01"] / M["m00"])
+                        # Return absolute screen coordinates
+                        abs_x = int(z["x"]) + cx
+                        abs_y = int(z["y"]) + cy
+                        return (abs_x, abs_y)
+            return None
+        except Exception:
+            return None
 
     def is_flag_100_percent(self) -> bool:
         """

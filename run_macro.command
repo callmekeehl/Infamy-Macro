@@ -14,4 +14,4 @@ python3 -m pip install -r requirements.txt
 
 echo ""
 echo "Launching Macro GUI..."
-python3 gui_app.py
+python3 ui_app.py
